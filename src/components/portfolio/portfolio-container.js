@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 import PortfolioItem from "./portolio-item";
 
@@ -9,15 +10,12 @@ export default class PortfolioContainer extends Component {
         this.state= {
             pageTitle: "Welcome to my portfolio",
             isloading: false,
-            data: [
-                {title: "Flexbox project", category: "eCommerce"},
-                {title: "Dinner project", category: "Scheduling"},
-                {title: "UML projects", category: "Enterprise"},
-                {title: "Portfolio projects", category: "eCommerce"}
-            ]
+            data: []
+            
         };
 
         this.handleFilter = this.handleFilter.bind(this);
+        
          /* vinculación para que funcione la función */
        /*  this.handlePageTitleUpdate = this.handlePageTitleUpdate.bind(this) */
     }
@@ -31,14 +29,33 @@ export default class PortfolioContainer extends Component {
         });
     }
 
+    getPortfolioItems(){
+        axios.get('https://joaquinrosa.devcamp.space/portfolio/portfolio_items')
+        .then(response => {
+          // handle success
+          console.log("Respuesta", response);
+          this.setState({
+              data: response.data.portfolio_items
+          });
+        })
+        .catch(error => {
+          // handle error
+          console.log(error);
+        })
+      }
     portfolioItems() {
         
         
         return this.state.data.map(item =>{
-            return <PortfolioItem title={item.title} url={"una dirección"}/>;
+            return (
+            <PortfolioItem key={item.id} title={item.name} url={item.url} slug ={item.id}/>
+            );    
         });
     }
 
+    componentDidMount() {
+        this.getPortfolioItems();
+    }
 /*     portfolioItems() {
         const data= ["Flexbox project", "Dinner project", "UML projects", "Portfolio projects"]
         
@@ -59,6 +76,8 @@ handlePageTitleUpdate() {/* función cambio título */
         if (this.state.isloading) {
             return <div>Loading...</div>
         }
+
+        
 
         return(
             <div>
