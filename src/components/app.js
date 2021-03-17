@@ -1,28 +1,28 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import { library } from "@fortawesome/fontawesome-svg-core";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-faTrash,
-faSignOutAlt,
-faEdit } from "@fortawesome/free-solid-svg-icons";
+
 
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import Blog from "./pages/blog";
+import BlogDetail from "./pages/blog-detail";
 import PortfolioManager from "./pages/portfolio-manager";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import Auth from "./pages/auth";
 import NoMatch from "./pages/no-match";
+import Icons from "../helpers/icons";
 
-library.add(faTrash, faSignOutAlt, faEdit);
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    Icons();
 
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN"
@@ -118,11 +118,23 @@ export default class App extends Component {
                   />
                 )}
               />
-              <Route path="/blog" component={Blog} />   
+              <Route path="/blog" 
+              render= {props => (
+                <Blog {...props} loggedInStatus = {this.state.loggedInStatus}/>
+
+              )}
+              
+              />
+
+
+
+              <Route path="/b/:slug" component={BlogDetail} />
+              {this.state.loggedInStatus === "LOGGED_IN" ? (
+              this.autorizedPages()) : null}
+   
               <Route path="/about-me" component={About} />
               <Route path="/contact" component={Contact} />
               
-              {this.state.loggedInStatus === "LOGGED_IN" ? (this.autorizedPages()) : null}
 
 
               
@@ -130,7 +142,7 @@ export default class App extends Component {
 
               <Route
                 exact
-                path=":slug"
+                path="portfolio:slug"
                 component={PortfolioDetail}
               />
               <Route component={NoMatch} />
