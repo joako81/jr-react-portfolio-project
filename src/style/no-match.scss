@@ -1,0 +1,29 @@
+.img-no-match img {
+
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 250px;
+    
+}
+
+
+.btn-no-match{
+
+    @include base-btn();
+    display:flex;
+    justify-content: center;
+    justify-items: center;
+    
+    a {cursor:pointer;
+    color:$offwhite;
+    font-size: 1em;
+    transition: 0.5s ease-in-out;
+    text-decoration: none;
+    align-items: center;
+        
+    }
+    
+}
