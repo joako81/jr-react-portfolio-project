@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NoMatchprofilePicture from '../../../static/assets/images/no-match/nomatchrobot.jpg';
+import NoMatchprofilePicture from '../../../static/assets/images/no-match/robot-not-found.jpg';
 
 
 export default function() {
