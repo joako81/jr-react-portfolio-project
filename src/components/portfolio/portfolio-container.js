@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import PortfolioItem from "./portolio-item";
 
+
 export default class PortfolioContainer extends Component {
     constructor() {
         super();
@@ -52,7 +53,7 @@ export default class PortfolioContainer extends Component {
       }
     portfolioItems() {
        
-                return this.state.data.map(item =>{
+        return this.state.data.map(item =>{
             return (
              <PortfolioItem 
                key={item.id}
@@ -85,8 +86,6 @@ handlePageTitleUpdate() {/* función cambio título */
         if (this.state.isloading) {
             return <div>Loading...</div>
         }
-
-        
 
         return(                         
             <div className ="homepage-wrapper">

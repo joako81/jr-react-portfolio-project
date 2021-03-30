@@ -70,7 +70,7 @@ export default class PortfolioManager extends Component {
                 portfolioItems: [...response.data.portfolio_items]
             });
         }).catch (error => {
-            console.log("error in getPorfolioItems", error);
+            console.log("error in getPortfolioItems", error);
         })
     }
 
