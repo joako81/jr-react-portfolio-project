@@ -15,7 +15,7 @@ export default function() {
             <div className="btn-no-match">
             
 
-                <Link to="/"><button >Return Home</button></Link>
+                <Link to="/">Return to homepage</Link>
             
             </div>
         </div>
