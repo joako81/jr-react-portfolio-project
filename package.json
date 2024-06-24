@@ -31,6 +31,10 @@
     "url": "https://github.com/bottega-code-school/js-builder/issues"
   },
   "homepage": "https://github.com/bottega-code-school/js-builder",
+
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
