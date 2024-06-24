@@ -3,12 +3,8 @@
   "version": "1.0.0",
   "description": "Personal portfolio app built in React",
   "scripts": {
-    
-     "preinstall": "npm install -g n && n 14",
-     "build-custom": "npm run build && n reset",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
-  
     "heroku-postbuild": "npm run build",
     "precommit": "eslint src",
     "prod": "NODE_ENV=production node server.js"
@@ -34,9 +30,8 @@
     "url": "https://github.com/bottega-code-school/js-builder/issues"
   },
   "homepage": "https://github.com/bottega-code-school/js-builder",
-
   "engines": {
-    "node": ">=14.0.0"
+    "node": "16.x"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
